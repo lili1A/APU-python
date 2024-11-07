@@ -239,3 +239,78 @@ while True:
     except ValueError:
         print("Invalid input. Enter numbers")
         
+# part c
+print("PART C.1")
+""" 1. Calculate employee weekly pay. The program will read the employee's name, 
+his total number of hours worked 
+and hourly wage rate. 
+Weekly pay is calculated as payment for regular hours (first 40 hours), 
+plus payment for overtime hours worked. 
+Payment for regular hours worked is calculated as (wage rate times regular hours worked);
+payment for overtime hours worked is calculated as (wage rate times overtime hours worked times 1.5).
+Display the employee's name and his weekly pay to the screen.
+Sample input - output
+Enter name: John
+Enter total number of hours worked: 50
+Enter hourly rate RM: 10
+John received RM 550.00.
+         """
+def employee_weekly_pay(name, worked_hours, hourly_wage_rate):
+    if worked_hours <= 40:
+        weekly_pay = worked_hours * hourly_wage_rate
+        print(f"{name}'s weekly pay is {weekly_pay} $")
+    else:
+        overtime_difference = worked_hours - 40
+        weekly_pay = overtime_difference * hourly_wage_rate * 1.5
+        print(f"{name}'s weekly pay is {weekly_pay} $")
+
+employee1_name = "Vannesa"
+employee1_worked_hours = 39
+employee1_hourly_wage_rate = 16
+employee_weekly_pay(employee1_name, employee1_worked_hours, employee1_hourly_wage_rate)
+employee2_name = "Jane"
+employee2_worked_hours = 40
+employee2_hourly_wage_rate = 13
+employee_weekly_pay(employee2_name, employee2_worked_hours, employee2_hourly_wage_rate)
+
+""" PCK Limited wishes to employ a systems analyst to undertake a major project. The decision will be based on the following:
+If a person is suitably qualified, has experience of more than 5 years and is aged over 30, he will be called for an interview.
+If he is less than 30 years old but qualified and has the necessary experience, he will also be called for an interview. 
+If the candidate is qualified and is aged over 30 but lack of experience, he will be rejected. 
+If the person is qualified but is neither experienced nor over 30 years old, his record will be kept on file.
+If he does not have the necessary qualification but the candidate is experienced and is over 30 years old, he will be called for an interview. If he has the relevant experience but not the qualification and is under-aged, his record will be kept on file. 
+If he does not have the necessary qualification or experience but is aged over 30 his application will be rejected. 
+He will also be rejected if he does not meet all conditions.
+Sample input - output
+Enter number of years of experience: 5
+Enter age: 28
+Qualified (1- Yes, 0 - No) :1
+Decision: Call for interview
+ """
+print("PART C.2")
+# arguments:
+# name, age, experience, qualification
+def interview(name, age, experience, qualification):
+    if age <30 and qualification == "yes" and experience == "yes":
+        print(f" Call {name} for interview")
+    elif age > 30 and qualification == "yes" and experience == "no":
+        print(f" Reject {name}'s application for interview")
+    elif age <30 and qualification == "yes" and experience == "no":
+         print(f" Keep {name}'s application for interview in the file")
+    elif age > 30 and qualification == "no" and experience == "yes":
+        print(f" Call {name} for interview")
+    elif age > 30 and qualification == "no" and experience == "no":
+        print(f" Reject {name}'s application for interview")
+    else:
+        print(f" Reject {name}'s application for interview")
+    
+interview("Alice", 28, "yes", "yes")
+interview("Bob", 35, "no", "yes")
+interview("Charlie", 25, "no", "yes")
+interview("David", 32, "yes", "no")
+interview("Eva", 29, "yes", "no")
+interview("Frank", 40, "yes", "no")
+interview("Grace", 22, "yes", "yes")
+interview("Hannah", 33, "yes", "yes")
+interview("Ian", 30, "no", "yes")
+interview("Jack", 27, "no", "no")
